@@ -123,7 +123,7 @@ Here is a sample output:
 ### Using the library in an Apigee Proxy
 
 1.<b> Create JavaScript Resource</b>: Use the Apigee UI or the Management Server API to create a new JavasScript resource that is the content of <code>graphql.lib.js</code>.<br/><br/>
-2.<b> Create JavaScript policy</b>: Create a new JavaScript policy and reference the <code>**graphql.js**</code> file using <IncludeURL> tag.
+2.<b> Create JavaScript policy</b>: Create a new JavaScript policy and reference the <code>**graphql.lib.js**</code> file using <IncludeURL> tag.
 ```
   <IncludeURL>jsc://graphql.lib.js</IncludeURL>
 ```
