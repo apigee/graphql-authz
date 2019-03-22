@@ -48,6 +48,15 @@ By default, it produces uglify-ed/minify-ed outputs. If you want pretty-fied out
   $ npm run build-pretty
 ```
 
+### Building gql-s2e CLI
+
+To make gql-s2e available to run in your path, run the following
+
+```
+  $ npm link
+```
+By running this, a link is created from the bin directory of your Node.js installation to the location where you have cloned this repo.
+
 ### Annotating GraphQL schema with scopes
 
 Below is a sample of how you can add scopes using the <code>@scope</code> directive in your GraphQL schema. 
@@ -113,10 +122,10 @@ Here is a sample output:
 
 ### Using the library in an Apigee Proxy
 
-1.<b> Create JavaScript Resource</b>: Use the Apigee UI or the Management Server API to create a new JavasScript resource that is the content of <code>graphql.js</code>.<br/><br/>
+1.<b> Create JavaScript Resource</b>: Use the Apigee UI or the Management Server API to create a new JavasScript resource that is the content of <code>graphql.lib.js</code>.<br/><br/>
 2.<b> Create JavaScript policy</b>: Create a new JavaScript policy and reference the <code>**graphql.js**</code> file using <IncludeURL> tag.
 ```
-  <IncludeURL>jsc://graphql.js</IncludeURL>
+  <IncludeURL>jsc://graphql.lib.js</IncludeURL>
 ```
 3.<b> Use the exported functions</b>: Within the source of the JavaScript policy from step 2, you can now make use of the functions under the <code>graphql.*</code> object.
 
