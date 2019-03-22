@@ -1,0 +1,41 @@
+# sample schema from Apollo Server (https://www.apollographql.com/docs/graphql-tools/generate-schema.html)
+directive @scope(value: String) on OBJECT
+
+type Author @scope(name: "admin", mutation: true) {
+    id: Int!
+    firstName: String
+    lastName: String
+    """
+    the list of Posts by this author
+    """
+    posts: [Post]  @scope(name: "scopec", query: true, mutation: false)
+}
+
+type Post  {
+    id: Int!
+    title: String
+    author: Author
+    votes: Int
+}
+
+# the schema allows the following query:
+type Query {
+    posts: [Post] @scope (name: "scopea", query: true)
+    author(id: Int!): Author @scope(name:"scopeb", query: true)
+}
+
+type PostMutation {
+    author: AuthorMutation
+}
+
+type AuthorMutation {
+    setName(name: String!) : String
+}
+# this schema allows the following mutation:
+type Mutation {
+    author(name: String) : Author
+    post(id: String) : PostMutation
+    upvotePost (
+        postId: Int!
+    ): Post
+}
