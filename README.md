@@ -64,7 +64,7 @@ The <code>@scope</code> directive is a custom directive in this project.
 
 ```
   # sample schema from Apollo Server (https://www.apollographql.com/docs/graphql-tools/generate-schema.html)
-  directive @scope(value: String) on OBJECT
+  directive @scope(name: String!, query: Boolean = false, mutation: Boolean = false, cascade: Boolean = true) on OBJECT | FIELD_DEFINITION
   
   type Author {
       id: Int!
