@@ -19,6 +19,7 @@ const {schemaToEntitlements, errors} = require('../lib/graphql.js');
 const fs = require('fs');
 
 const filename = process.argv[2];
+const maxDepth = process.argv[3];
 
 if (!fs.existsSync(filename)){
     console.error("Error: File does not exist");
@@ -28,7 +29,7 @@ if (!fs.existsSync(filename)){
 const file_contents = fs.readFileSync(filename).toString();
 
 try {
-    let entitlements_map = schemaToEntitlements(file_contents);
+    let entitlements_map = schemaToEntitlements(file_contents, maxDepth);
     console.log(JSON.stringify(entitlements_map, null, 2));
 } catch (e) {
     if (e instanceof errors.GraphQLError) {
